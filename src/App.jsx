@@ -13,9 +13,10 @@ import Projects from "./components/Projects";
 import Footer from "./components/helper/Footer";
 import getDocDefinition from "./assets/pdfStucture";
 import { userInformationContext } from "./contexts/Information";
-import * as pdfMake from "pdfmake/build/pdfmake";
-import * as pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "./vfs_fonts.js";
+
+pdfMake.vfs = pdfFonts;
 function App() {
 	const {
 		personalInfo,
