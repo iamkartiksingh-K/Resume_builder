@@ -1,8 +1,2 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Resume Builder
+You can use this tool to create simple resumes that are ATS-friendly.![Screenshot from 2024-05-28 19-05-22](https://github.com/iamkartiksingh-K/Resume_builder/assets/62024947/e223a5a7-b211-4e05-8e31-9b7de5b5938f)
