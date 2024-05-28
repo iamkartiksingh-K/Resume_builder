@@ -264,117 +264,153 @@ const getDocDefinition = (
 				],
 				style: "personalDetails",
 			},
-			education.length && { text: "Education", style: "sectionHeading" },
-			{
-				canvas: [
-					{
-						type: "line",
-						x1: 0,
-						y1: 0,
-						x2: 508.6,
-						y2: 0,
-						lineWidth: 0.5,
-					},
-				],
-			},
+			education.length > 0
+				? {
+						text: "Education",
+						style: "sectionHeading",
+				  }
+				: null,
+			education.length > 0
+				? {
+						canvas: [
+							{
+								type: "line",
+								x1: 0,
+								y1: 0,
+								x2: 508.6,
+								y2: 0,
+								lineWidth: 0.5,
+							},
+						],
+				  }
+				: null,
 			// education
-			education.length && {
-				layout: "noBorders",
-				table: {
-					widths: ["70%", "*"],
+			education.length > 0
+				? {
+						layout: "noBorders",
+						table: {
+							widths: ["70%", "*"],
 
-					body: educationArr,
-					style: "table",
-				},
-				style: "sectionBody",
-			},
-			experience.length && {
-				text: "Experience",
-				style: "sectionHeading",
-			},
-			{
-				canvas: [
-					{
-						type: "line",
-						x1: 0,
-						y1: 0,
-						x2: 508.6,
-						y2: 0,
-						lineWidth: 0.5,
-					},
-				],
-			},
+							body: educationArr,
+							style: "table",
+						},
+						style: "sectionBody",
+				  }
+				: null,
+			experience.length > 0
+				? {
+						text: "Experience",
+						style: "sectionHeading",
+				  }
+				: null,
+			experience.length > 0
+				? {
+						canvas: [
+							{
+								type: "line",
+								x1: 0,
+								y1: 0,
+								x2: 508.6,
+								y2: 0,
+								lineWidth: 0.5,
+							},
+						],
+				  }
+				: null,
 			// Work
-			experience.length && {
-				layout: "noBorders",
-				table: {
-					widths: ["70%", "*"],
+			experience.length > 0
+				? {
+						layout: "noBorders",
+						table: {
+							widths: ["70%", "*"],
 
-					body: jobArr,
-					style: "table",
-				},
-				style: "sectionBody",
-			},
-			projects.length && { text: "Projects", style: "sectionHeading" },
-			projects.length && {
-				canvas: [
-					{
-						type: "line",
-						x1: 0,
-						y1: 0,
-						x2: 508.6,
-						y2: 0,
-						lineWidth: 0.5,
-					},
-				],
-			},
+							body: jobArr,
+							style: "table",
+						},
+						style: "sectionBody",
+				  }
+				: null,
+			projects.length > 0
+				? {
+						text: "Projects",
+						style: "sectionHeading",
+				  }
+				: null,
+			projects.length > 0
+				? {
+						canvas: [
+							{
+								type: "line",
+								x1: 0,
+								y1: 0,
+								x2: 508.6,
+								y2: 0,
+								lineWidth: 0.5,
+							},
+						],
+				  }
+				: null,
 			// projects
-			projects.length && {
-				layout: "noBorders",
-				table: {
-					widths: ["70%", "*"],
+			projects.length > 0
+				? {
+						layout: "noBorders",
+						table: {
+							widths: ["70%", "*"],
 
-					body: projectArr,
-					style: "table",
-				},
-				style: "sectionBody",
-			},
+							body: projectArr,
+							style: "table",
+						},
+						style: "sectionBody",
+				  }
+				: null,
 			// skills
-			skills.length && { text: "Skills", style: "sectionHeading" },
-			{
-				canvas: [
-					{
-						type: "line",
-						x1: 0,
-						y1: 0,
-						x2: 508.6,
-						y2: 0,
-						lineWidth: 0.5,
-					},
-				],
-			},
-			skills.length && { text: "", style: "spacer" },
+			skills.length > 0
+				? { text: "Skills", style: "sectionHeading" }
+				: null,
+			skills.length > 0
+				? {
+						canvas: [
+							{
+								type: "line",
+								x1: 0,
+								y1: 0,
+								x2: 508.6,
+								y2: 0,
+								lineWidth: 0.5,
+							},
+						],
+				  }
+				: null,
+			skills.length > 0 ? { text: "", style: "spacer" } : null,
 
-			skills.length && {
-				stack: skillArr,
-			},
-			achievements && { text: "Achievements", style: "sectionHeading" },
-			achievements && {
-				canvas: [
-					{
-						type: "line",
-						x1: 0,
-						y1: 0,
-						x2: 508.6,
-						y2: 0,
-						lineWidth: 0.5,
-					},
-				],
-			},
-			achievements && { text: "", style: "spacer" },
-			achievements && {
-				ul: createDescription(achievements),
-			},
+			skills.length > 0
+				? {
+						stack: skillArr,
+				  }
+				: null,
+			achievements
+				? { text: "Achievements", style: "sectionHeading" }
+				: null,
+			achievements
+				? {
+						canvas: [
+							{
+								type: "line",
+								x1: 0,
+								y1: 0,
+								x2: 508.6,
+								y2: 0,
+								lineWidth: 0.5,
+							},
+						],
+				  }
+				: null,
+			achievements ? { text: "", style: "spacer" } : null,
+			achievements
+				? {
+						ul: createDescription(achievements),
+				  }
+				: null,
 		],
 		styles: {
 			fullName: {

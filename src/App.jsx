@@ -13,8 +13,8 @@ import Projects from "./components/Projects";
 import Footer from "./components/helper/Footer";
 import getDocDefinition from "./assets/pdfStucture";
 import { userInformationContext } from "./contexts/Information";
-import pdfMake from "pdfmake/build/pdfmake";
-import { pdfFonts } from "pdfmake/build/vfs_fonts";
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 function App() {
 	const {
