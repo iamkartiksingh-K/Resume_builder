@@ -14,7 +14,7 @@ import Footer from "./components/helper/Footer";
 import getDocDefinition from "./assets/pdfStucture";
 import { userInformationContext } from "./contexts/Information";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import { pdfFonts } from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 function App() {
 	const {

@@ -233,16 +233,16 @@ const getDocDefinition = (
 		pageMargins: [43.2, 43.2, 43.2, 43.2],
 
 		content: [
-			{ text: personalDetails.fullName, style: "fullName" },
+			{ text: personalDetails.fullName || "", style: "fullName" },
 			{
 				text: [
-					personalDetails.phoneNumber,
+					personalDetails.phoneNumber || "",
 					" | ",
-					personalDetails.email,
+					personalDetails.email || "",
 					" | ",
 					{
-						text: personalDetails.linkedin,
-						link: personalDetails.linkedin,
+						text: personalDetails.linkedin || "",
+						link: personalDetails.linkedin || "",
 						color: "blue",
 					},
 					personalDetails.github ? " | " : "",
@@ -264,7 +264,7 @@ const getDocDefinition = (
 				],
 				style: "personalDetails",
 			},
-			education && { text: "Education", style: "sectionHeading" },
+			education.length && { text: "Education", style: "sectionHeading" },
 			{
 				canvas: [
 					{
@@ -278,7 +278,7 @@ const getDocDefinition = (
 				],
 			},
 			// education
-			education && {
+			education.length && {
 				layout: "noBorders",
 				table: {
 					widths: ["70%", "*"],
@@ -288,7 +288,10 @@ const getDocDefinition = (
 				},
 				style: "sectionBody",
 			},
-			experience && { text: "Experience", style: "sectionHeading" },
+			experience.length && {
+				text: "Experience",
+				style: "sectionHeading",
+			},
 			{
 				canvas: [
 					{
@@ -302,7 +305,7 @@ const getDocDefinition = (
 				],
 			},
 			// Work
-			experience && {
+			experience.length && {
 				layout: "noBorders",
 				table: {
 					widths: ["70%", "*"],
@@ -312,8 +315,8 @@ const getDocDefinition = (
 				},
 				style: "sectionBody",
 			},
-			projects && { text: "Projects", style: "sectionHeading" },
-			projects && {
+			projects.length && { text: "Projects", style: "sectionHeading" },
+			projects.length && {
 				canvas: [
 					{
 						type: "line",
@@ -326,7 +329,7 @@ const getDocDefinition = (
 				],
 			},
 			// projects
-			projects && {
+			projects.length && {
 				layout: "noBorders",
 				table: {
 					widths: ["70%", "*"],
@@ -337,7 +340,7 @@ const getDocDefinition = (
 				style: "sectionBody",
 			},
 			// skills
-			skills && { text: "Skills", style: "sectionHeading" },
+			skills.length && { text: "Skills", style: "sectionHeading" },
 			{
 				canvas: [
 					{
@@ -350,9 +353,9 @@ const getDocDefinition = (
 					},
 				],
 			},
-			skills && { text: "", style: "spacer" },
+			skills.length && { text: "", style: "spacer" },
 
-			skills && {
+			skills.length && {
 				stack: skillArr,
 			},
 			achievements && { text: "Achievements", style: "sectionHeading" },
