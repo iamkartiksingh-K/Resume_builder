@@ -4,7 +4,7 @@ import TabLink from "./helper/TabLink";
 
 const TabGroup = ({ className, selected, setSelected }) => {
 	const classes = classNames(
-		"flex px-1 items-center border h-12 rounded-md shadow-sm",
+		"flex flex-wrap px-1 items-center border h-fit rounded-md shadow-sm",
 		className
 	);
 	return (

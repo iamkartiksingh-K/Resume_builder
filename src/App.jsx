@@ -56,7 +56,7 @@ function App() {
 				<TabGroup
 					setSelected={setSelected}
 					selected={selected}
-					className={"w-full lg:w-1/2 my-3"}
+					className={"w-full  md:w-1/2 my-3"}
 				/>
 				<Button
 					className={

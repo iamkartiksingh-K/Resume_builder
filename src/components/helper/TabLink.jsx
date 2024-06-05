@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 const TabLink = ({ tabName, className, setSelected, selected, index }) => {
 	const tabClass = classNames(
-		"p-2 font-medium hover:cursor-pointer text-center rounded-md px-2",
+		"p-2 text-xs md:text-sm lg:text-base font-medium hover:cursor-pointer text-center rounded-md px-2",
 		className,
 		{
 			"bg-sky-500 text-white": selected === index,

@@ -242,14 +242,14 @@ const getDocDefinition = (
 					" | ",
 					{
 						text: personalDetails.linkedin || "",
-						link: personalDetails.linkedin || "",
+						link: `https://${personalDetails.linkedin}` || "",
 						color: "blue",
 					},
 					personalDetails.github ? " | " : "",
 					personalDetails.github
 						? {
 								text: personalDetails.github,
-								link: personalDetails.github,
+								link: `https://${personalDetails.github}`,
 								color: "blue",
 						  }
 						: "",
@@ -257,7 +257,7 @@ const getDocDefinition = (
 					personalDetails.portfolio
 						? {
 								text: personalDetails.portfolio,
-								link: personalDetails.portfolio,
+								link: `https://${personalDetails.portfolio}`,
 								color: "blue",
 						  }
 						: "",
