@@ -56,7 +56,7 @@ function App() {
 				<TabGroup
 					setSelected={setSelected}
 					selected={selected}
-					className={"w-full  md:w-1/2 my-3"}
+					className={"w-full  lg:w-1/2 my-3"}
 				/>
 				<Button
 					className={
@@ -67,9 +67,9 @@ function App() {
 					Download
 				</Button>
 			</div>
-			<div className='flex flex-col w-full lg:flex-row space-x-1 grow '>
-				<Panel className={"w-full"}>{components[selected]}</Panel>
-				<Preview className={"w-full"} />
+			<div className='flex flex-col w-full lg:flex-row md:space-y-2 sm:space-x-0 md:space-x-2 lg:space-y-0 space-x-2  grow '>
+				<Panel className={"w-full grow"}>{components[selected]}</Panel>
+				<Preview className={"w-full grow"} />
 			</div>
 			<Footer />
 		</div>

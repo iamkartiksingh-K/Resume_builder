@@ -19,6 +19,9 @@ const Achievements = () => {
 					"Separate each achievement with enter key ↵ \nExample:-\nCreated my own programming language. \nWriter of one of the best selling books."
 				}
 			/>
+			<p className='text-center text-slate-400'>
+				You can now download your resume
+			</p>
 		</>
 	);
 };

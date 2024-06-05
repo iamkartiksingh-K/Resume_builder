@@ -4,8 +4,8 @@ import { v4 as uniqueId } from "uuid";
 import Heading from "./helper/Heading";
 import DisplaySkill from "./helper/DisplaySkill";
 import SkillForm from "./helper/SkillForm";
-
-const Skills = () => {
+import Button from "./helper/Button";
+const Skills = ({ goForward }) => {
 	const { skills, setSkills } = useContext(userInformationContext);
 
 	const [skill, setSkill] = useState({ key: "", type: "", desc: "" });
@@ -38,6 +38,11 @@ const Skills = () => {
 			<Heading>Skills</Heading>
 			<SkillForm addSkill={addSkill} skill={skill} setSkill={setSkill} />
 			<div className='mx-3 mt-10'>{savedSkills}</div>
+			<div className='flex justify-center'>
+				<Button onClick={goForward} primary className={"bg-green-500"}>
+					Done
+				</Button>
+			</div>
 		</>
 	);
 };
