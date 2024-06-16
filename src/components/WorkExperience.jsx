@@ -19,6 +19,7 @@ const WorkExperience = ({ goForward }) => {
 			return key !== keyToDelete;
 		});
 		setExperience(newJobSet);
+		localStorage.setItem("experience", JSON.stringify(newJobSet));
 	};
 	const renderedComponent = showForm ? (
 		<WorkForm
@@ -58,7 +59,13 @@ const WorkExperience = ({ goForward }) => {
 				)}
 				<div className='flex justify-center mt-5 space-x-2'>
 					<Button
-						onClick={goForward}
+						onClick={() => {
+							localStorage.setItem(
+								"experience",
+								JSON.stringify(experience)
+							);
+							goForward();
+						}}
 						primary
 						className={"bg-green-500"}>
 						Done

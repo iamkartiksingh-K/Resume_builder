@@ -13,17 +13,19 @@ const ProjectForm = ({ closeForm, project, setProject, editProject }) => {
 		setCurrProject({ ...currProject, [key]: event.target.value });
 	};
 	const save = () => {
+		let newProjectSet;
 		if (editProject) {
-			const newProjectSet = project.map((thisProject) => {
+			newProjectSet = project.map((thisProject) => {
 				if (thisProject.key === editProject.key) {
 					return currProject;
 				}
 				return thisProject;
 			});
-			setProject(newProjectSet);
 		} else {
-			setProject([...project, { ...currProject, key: uniqueId() }]);
+			newProjectSet = [...project, { ...currProject, key: uniqueId() }];
 		}
+		localStorage.setItem("projects", JSON.stringify(newProjectSet));
+		setProject(newProjectSet);
 		setCurrProject(new CreateProject());
 		closeForm();
 	};

@@ -18,6 +18,7 @@ const Projects = ({ goForward }) => {
 			return key !== keyToDelete;
 		});
 		setProjects(newJobSet);
+		localStorage.setItem("projects", JSON.stringify(newJobSet));
 	};
 	const renderedComponent = showForm ? (
 		<ProjectForm

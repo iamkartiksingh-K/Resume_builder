@@ -14,11 +14,12 @@ const Education = ({ goForward }) => {
 		setEditForm(education.find(({ key }) => key === keyToEdit));
 		setShowForm(true);
 	};
-	const deleteJob = (keyToDelete) => {
+	const deleteEducation = (keyToDelete) => {
 		const newSchoolSet = education.filter(({ key }) => {
 			return key !== keyToDelete;
 		});
 		setEducation(newSchoolSet);
+		localStorage.setItem("education", JSON.stringify(newSchoolSet));
 	};
 	const renderedComponent = showForm ? (
 		<EducationForm
@@ -52,7 +53,7 @@ const Education = ({ goForward }) => {
 								rightSubText={`${scoreType} : ${score}`}
 								itemKey={key}
 								edit={edit}
-								deleteItem={deleteJob}
+								deleteItem={deleteEducation}
 							/>
 						);
 					}

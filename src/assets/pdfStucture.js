@@ -239,12 +239,14 @@ const getDocDefinition = (
 					personalDetails.phoneNumber || "",
 					" | ",
 					personalDetails.email || "",
-					" | ",
-					{
-						text: personalDetails.linkedin || "",
-						link: `https://${personalDetails.linkedin}` || "",
-						color: "blue",
-					},
+					personalDetails.linkedin ? " | " : "",
+					personalDetails.linkedin
+						? {
+								text: personalDetails.linkedin,
+								link: `https://${personalDetails.linkedin}`,
+								color: "blue",
+						  }
+						: "",
 					personalDetails.github ? " | " : "",
 					personalDetails.github
 						? {

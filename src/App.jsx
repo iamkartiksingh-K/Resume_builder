@@ -39,8 +39,9 @@ function App() {
 		<Skills goForward={goForward} />,
 		<Achievements goForward={goForward} />,
 	];
-	const downloadResume = async () => {
-		const docDefinition = await getDocDefinition(
+	const downloadResume = () => {
+		localStorage.setItem("achievements", JSON.stringify(achievements));
+		const docDefinition = getDocDefinition(
 			personalInfo,
 			education,
 			experience,

@@ -11,17 +11,19 @@ const WorkForm = ({ closeForm, work, setWork, editJob }) => {
 		setJob({ ...job, [key]: event.target.value });
 	};
 	const save = () => {
+		let newWorkSet;
 		if (editJob) {
-			const newWorkSet = work.map((currJob) => {
+			newWorkSet = work.map((currJob) => {
 				if (currJob.key === editJob.key) {
 					return job;
 				}
 				return currJob;
 			});
-			setWork(newWorkSet);
 		} else {
-			setWork([...work, { ...job, key: uniqueId() }]);
+			newWorkSet = [...work, { ...job, key: uniqueId() }];
 		}
+		localStorage.setItem("experience", JSON.stringify(newWorkSet));
+		setWork(newWorkSet);
 		setJob(new CreateJob());
 		closeForm();
 	};

@@ -58,12 +58,21 @@ const PersonalDetails = ({ goForward }) => {
 					label={"Portfolio"}
 					type={"text"}
 					placeholder={"www.yourPortfolio.com"}
-					value={personalInfo.other}
-					onChange={(event) => handleChange(event, "other")}
+					value={personalInfo.portfolio}
+					onChange={(event) => handleChange(event, "portfolio")}
 				/>
 			</form>
 			<div className='flex justify-center mt-5 space-x-2'>
-				<Button onClick={goForward} primary className={"bg-green-500"}>
+				<Button
+					onClick={() => {
+						localStorage.setItem(
+							"personalInfo",
+							JSON.stringify(personalInfo)
+						);
+						goForward();
+					}}
+					primary
+					className={"bg-green-500"}>
 					Done
 				</Button>
 			</div>

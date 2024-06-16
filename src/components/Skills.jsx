@@ -12,7 +12,9 @@ const Skills = ({ goForward }) => {
 
 	const addSkill = () => {
 		if (skill.type.trim() && skill.desc.trim()) {
-			setSkills([...skills, { ...skill, key: uniqueId() }]);
+			const newSkills = [...skills, { ...skill, key: uniqueId() }];
+			setSkills(newSkills);
+			localStorage.setItem("skills", JSON.stringify(newSkills));
 			setSkill({ key: "", type: "", desc: "" });
 		}
 	};
@@ -21,6 +23,7 @@ const Skills = ({ goForward }) => {
 			return skill.key !== key;
 		});
 		setSkills(newSkillSet);
+		localStorage.setItem("skills", JSON.stringify(newSkillSet));
 	};
 	const savedSkills = skills.map(({ key, type, desc }) => {
 		return (
@@ -39,7 +42,10 @@ const Skills = ({ goForward }) => {
 			<SkillForm addSkill={addSkill} skill={skill} setSkill={setSkill} />
 			<div className='mx-3 mt-10'>{savedSkills}</div>
 			<div className='flex justify-center'>
-				<Button onClick={goForward} primary className={"bg-green-500"}>
+				<Button
+					onClick={goForward}
+					primary
+					className={"bg-green-500 mt-3"}>
 					Done
 				</Button>
 			</div>

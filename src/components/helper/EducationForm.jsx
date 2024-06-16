@@ -11,17 +11,19 @@ const EducationForm = ({ closeForm, education, setEducation, editSchool }) => {
 		setCollegeInfo({ ...collegeInfo, [key]: event.target.value });
 	};
 	const save = () => {
+		let newSchoolSet;
 		if (editSchool) {
-			const newSchoolSet = education.map((currSchool) => {
+			newSchoolSet = education.map((currSchool) => {
 				if (currSchool.key === editSchool.key) {
 					return collegeInfo;
 				}
 				return currSchool;
 			});
-			setEducation(newSchoolSet);
 		} else {
-			setEducation([...education, { ...collegeInfo, key: uniqueId() }]);
+			newSchoolSet = [...education, { ...collegeInfo, key: uniqueId() }];
 		}
+		localStorage.setItem("education", JSON.stringify(newSchoolSet));
+		setEducation(newSchoolSet);
 		setCollegeInfo(new CreateSchool());
 		closeForm();
 	};
