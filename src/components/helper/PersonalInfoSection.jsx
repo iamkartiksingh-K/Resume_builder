@@ -21,8 +21,9 @@ export default function PersonalInfoSection({ info }) {
 						<a
 							href={`https://${info.linkedin}`}
 							target='_blank'
+							className='text-blue-500'
 							rel='noopener noreferrer'>
-							{info.linkedin}
+							{"Linkedin"}
 						</a>
 					</>
 				)}
@@ -33,8 +34,9 @@ export default function PersonalInfoSection({ info }) {
 						<a
 							href={`https://${info.github}`}
 							target='_blank'
+							className='text-blue-500'
 							rel='noopener noreferrer'>
-							{info.github}
+							{"Github"}
 						</a>
 					</>
 				)}

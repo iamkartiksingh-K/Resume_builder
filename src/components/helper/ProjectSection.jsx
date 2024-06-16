@@ -2,7 +2,7 @@ import Heading from "./Heading";
 import Job from "./Job";
 import Hr from "./Hr";
 import Project from "./Project";
-export default function ExperienceSection({ projects }) {
+export default function ProjectSection({ projects }) {
 	return (
 		<div className='mb-2'>
 			<Heading>Projects</Heading>

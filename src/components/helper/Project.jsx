@@ -8,7 +8,6 @@ export default function Project({
 	liveLink,
 	description,
 }) {
-	console.log(githubLink);
 	return (
 		<div className='mb-2'>
 			<div className='flex justify-between'>

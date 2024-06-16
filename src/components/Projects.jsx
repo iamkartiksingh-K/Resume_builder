@@ -14,11 +14,11 @@ const Projects = ({ goForward }) => {
 		setShowForm(true);
 	};
 	const deleteJob = (keyToDelete) => {
-		const newJobSet = projects.filter(({ key }) => {
+		const newProjectSet = projects.filter(({ key }) => {
 			return key !== keyToDelete;
 		});
-		setProjects(newJobSet);
-		localStorage.setItem("projects", JSON.stringify(newJobSet));
+		setProjects(newProjectSet);
+		localStorage.setItem("projects", JSON.stringify(newProjectSet));
 	};
 	const renderedComponent = showForm ? (
 		<ProjectForm
