@@ -29,6 +29,7 @@ const WorkExperience = ({ goForward }) => {
 			work={experience}
 			setWork={setExperience}
 			editJob={editForm}
+			setEditForm={setEditForm}
 		/>
 	) : (
 		<>
@@ -59,13 +60,7 @@ const WorkExperience = ({ goForward }) => {
 				)}
 				<div className='flex justify-center mt-5 space-x-2'>
 					<Button
-						onClick={() => {
-							localStorage.setItem(
-								"experience",
-								JSON.stringify(experience)
-							);
-							goForward();
-						}}
+						onClick={goForward}
 						primary
 						className={"bg-green-500"}>
 						Done

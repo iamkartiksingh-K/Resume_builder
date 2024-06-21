@@ -29,6 +29,7 @@ const Education = ({ goForward }) => {
 			education={education}
 			setEducation={setEducation}
 			editSchool={editForm}
+			setEditForm={setEditForm}
 		/>
 	) : (
 		<>

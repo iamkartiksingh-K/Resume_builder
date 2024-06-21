@@ -1,7 +1,8 @@
 import { userInformationContext } from "../contexts/Information";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Heading from "./helper/Heading";
 import Textarea from "./helper/Textarea";
+import Button from "./helper/Button";
 const Achievements = () => {
 	const { achievements, setAchievements } = useContext(
 		userInformationContext
@@ -19,7 +20,20 @@ const Achievements = () => {
 					"Separate each achievement with enter key ↵ \nExample:-\nCreated my own programming language. \nWriter of one of the best selling books."
 				}
 			/>
-			<p className='text-center text-slate-400'>
+
+			<div className='flex justify-center '>
+				<Button
+					className={"bg-green-600 text-white"}
+					onClick={() => {
+						localStorage.setItem(
+							"achievements",
+							JSON.stringify(achievements)
+						);
+					}}>
+					Save
+				</Button>
+			</div>
+			<p className='text-center text-slate-400 mt-5'>
 				You can now download your resume
 			</p>
 		</>

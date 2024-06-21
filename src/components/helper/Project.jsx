@@ -27,7 +27,7 @@ export default function Project({
 
 			<Description desc={description} />
 			<div className='mt-1'>
-				<a className='text-blue-600 mr-2' href={`${githubLink}`}>
+				<a className='text-blue-600 mr-2 ml-4' href={`${githubLink}`}>
 					Github
 				</a>
 				<a className='text-blue-600 mr-2' href={`${liveLink}`}>

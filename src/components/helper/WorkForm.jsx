@@ -5,7 +5,7 @@ import { useState } from "react";
 import { v4 as uniqueId } from "uuid";
 import { CreateJob } from "../../utils/Helpers";
 
-const WorkForm = ({ closeForm, work, setWork, editJob }) => {
+const WorkForm = ({ closeForm, setEditForm, work, setWork, editJob }) => {
 	const [job, setJob] = useState(editJob || new CreateJob());
 	const handleChange = (event, key) => {
 		setJob({ ...job, [key]: event.target.value });
@@ -25,6 +25,7 @@ const WorkForm = ({ closeForm, work, setWork, editJob }) => {
 		localStorage.setItem("experience", JSON.stringify(newWorkSet));
 		setWork(newWorkSet);
 		setJob(new CreateJob());
+		setEditForm(undefined);
 		closeForm();
 	};
 	const cancel = () => {

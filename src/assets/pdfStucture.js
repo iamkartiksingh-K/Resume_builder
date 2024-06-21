@@ -477,7 +477,8 @@ const getDocDefinition = (
 				fontSize: 11,
 			},
 			projectLinks: {
-				margin: [0, 8, 0, 0],
+				margin: [10, 4, 0, 0],
+				fontSize: 10,
 			},
 		},
 	};

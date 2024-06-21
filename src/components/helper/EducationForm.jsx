@@ -3,7 +3,13 @@ import Button from "./Button";
 import { useState } from "react";
 import { v4 as uniqueId } from "uuid";
 import { CreateSchool } from "../../utils/Helpers";
-const EducationForm = ({ closeForm, education, setEducation, editSchool }) => {
+const EducationForm = ({
+	closeForm,
+	setEditForm,
+	education,
+	setEducation,
+	editSchool,
+}) => {
 	const [collegeInfo, setCollegeInfo] = useState(
 		editSchool || new CreateSchool()
 	);
@@ -22,9 +28,10 @@ const EducationForm = ({ closeForm, education, setEducation, editSchool }) => {
 		} else {
 			newSchoolSet = [...education, { ...collegeInfo, key: uniqueId() }];
 		}
-		localStorage.setItem("education", JSON.stringify(newSchoolSet));
 		setEducation(newSchoolSet);
 		setCollegeInfo(new CreateSchool());
+		localStorage.setItem("education", JSON.stringify(newSchoolSet));
+		setEditForm(undefined);
 		closeForm();
 	};
 	const cancel = () => {

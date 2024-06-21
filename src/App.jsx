@@ -40,7 +40,6 @@ function App() {
 		<Achievements goForward={goForward} />,
 	];
 	const downloadResume = () => {
-		localStorage.setItem("achievements", JSON.stringify(achievements));
 		const docDefinition = getDocDefinition(
 			personalInfo,
 			education,
