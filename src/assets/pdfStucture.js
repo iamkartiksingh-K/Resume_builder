@@ -210,7 +210,8 @@ const getDocDefinition = (
 	experience,
 	projects,
 	skills,
-	achievements
+	achievements,
+	fontType
 ) => {
 	const educationArr = education.map((college) => {
 		return createCollege(college);
@@ -231,7 +232,9 @@ const getDocDefinition = (
 	const docDefinition = {
 		pageSize: "A4",
 		pageMargins: [43.2, 43.2, 43.2, 43.2],
-
+		defaultStyle: {
+			font: fontType ? "Roboto" : "heuristica",
+		},
 		content: [
 			{ text: personalDetails.fullName || "", style: "fullName" },
 			{
