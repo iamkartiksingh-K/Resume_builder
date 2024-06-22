@@ -67,14 +67,14 @@ function App() {
 		pdfMake.createPdf(docDefinition).download("Resume");
 	};
 	return (
-		<div className='flex flex-col h-screen'>
+		<div className='flex flex-col align-center h-screen'>
 			<div className='flex flex-col lg:flex-row justify-between align-center '>
 				<TabGroup
 					setSelected={setSelected}
 					selected={selected}
-					className={"w-full  lg:w-1/2 my-3"}
+					className={"w-full md:mr-3  lg:w-[49%] my-3"}
 				/>
-				<div className='flex'>
+				<div className='flex justify-center'>
 					<Button
 						className={
 							"flex items-center justify-center my-3 shadow  text-gray-700 mr-2"
