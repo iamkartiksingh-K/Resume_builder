@@ -13,7 +13,7 @@ const Projects = ({ goForward }) => {
 		setEditForm(projects.find(({ key }) => key === keyToEdit));
 		setShowForm(true);
 	};
-	const deleteJob = (keyToDelete) => {
+	const deleteProject = (keyToDelete) => {
 		const newProjectSet = projects.filter(({ key }) => {
 			return key !== keyToDelete;
 		});
@@ -28,6 +28,7 @@ const Projects = ({ goForward }) => {
 			project={projects}
 			setProject={setProjects}
 			editProject={editForm}
+			setEditForm={setEditForm}
 		/>
 	) : (
 		<>
@@ -43,7 +44,7 @@ const Projects = ({ goForward }) => {
 								endDate={endDate}
 								itemKey={key}
 								edit={edit}
-								deleteItem={deleteJob}
+								deleteItem={deleteProject}
 							/>
 						);
 					}

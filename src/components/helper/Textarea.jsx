@@ -1,7 +1,9 @@
 import classNames from "classnames";
 
-const Textarea = ({ label, placeholder, className, ...rest }) => {
+const Textarea = ({ label, placeholder, required, className, ...rest }) => {
 	const containerClass = classNames("flex flex-col my-3", className);
+	const redAstric = <span className='text-red-400'>*</span>;
+
 	return (
 		<div className={containerClass}>
 			{label && (
@@ -9,6 +11,7 @@ const Textarea = ({ label, placeholder, className, ...rest }) => {
 					htmlFor='label'
 					className={"text-base mb-1 font-medium text-gray-900"}>
 					{label}
+					{required && redAstric}
 				</label>
 			)}
 			<textarea

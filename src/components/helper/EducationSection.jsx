@@ -2,7 +2,6 @@ import School from "./School";
 import Heading from "./Heading";
 import Hr from "./Hr";
 export default function EducationSection({ schools }) {
-	console.log(schools);
 	return (
 		<div className='mb-3'>
 			<Heading>Education</Heading>

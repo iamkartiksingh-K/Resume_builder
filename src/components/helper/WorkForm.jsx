@@ -7,29 +7,41 @@ import { CreateJob } from "../../utils/Helpers";
 
 const WorkForm = ({ closeForm, setEditForm, work, setWork, editJob }) => {
 	const [job, setJob] = useState(editJob || new CreateJob());
+	const [error, setError] = useState(false);
 	const handleChange = (event, key) => {
+		setError(false);
 		setJob({ ...job, [key]: event.target.value });
 	};
 	const save = () => {
-		let newWorkSet;
-		if (editJob) {
-			newWorkSet = work.map((currJob) => {
-				if (currJob.key === editJob.key) {
-					return job;
-				}
-				return currJob;
-			});
+		const { companyName, position, startDate, endDate, description } = job;
+		if (
+			!companyName ||
+			!position ||
+			!startDate ||
+			!endDate ||
+			!description
+		) {
+			setError(true);
 		} else {
-			newWorkSet = [...work, { ...job, key: uniqueId() }];
+			let newWorkSet;
+			if (editJob) {
+				newWorkSet = work.map((currJob) => {
+					if (currJob.key === editJob.key) {
+						return job;
+					}
+					return currJob;
+				});
+			} else {
+				newWorkSet = [...work, { ...job, key: uniqueId() }];
+			}
+			localStorage.setItem("experience", JSON.stringify(newWorkSet));
+			setWork(newWorkSet);
+			setEditForm(new CreateJob());
+			closeForm();
 		}
-		localStorage.setItem("experience", JSON.stringify(newWorkSet));
-		setWork(newWorkSet);
-		setJob(new CreateJob());
-		setEditForm(undefined);
-		closeForm();
 	};
 	const cancel = () => {
-		setJob(new CreateJob());
+		setEditForm(new CreateJob());
 		closeForm();
 	};
 	return (
@@ -37,12 +49,14 @@ const WorkForm = ({ closeForm, setEditForm, work, setWork, editJob }) => {
 			<Input
 				label={"Company"}
 				value={job.companyName}
+				required
 				onChange={(event) => handleChange(event, "companyName")}
 				placeholder={"Mircrosoft"}
 			/>
 			<Input
 				label={"Position"}
 				value={job.position}
+				required
 				onChange={(event) => handleChange(event, "position")}
 				placeholder={"SDE-I"}
 			/>
@@ -51,6 +65,7 @@ const WorkForm = ({ closeForm, setEditForm, work, setWork, editJob }) => {
 					label={"Start Date"}
 					className={"grow"}
 					placeholder={"August 2022"}
+					required
 					value={job.startDate}
 					onChange={(event) => handleChange(event, "startDate")}
 				/>
@@ -58,12 +73,14 @@ const WorkForm = ({ closeForm, setEditForm, work, setWork, editJob }) => {
 					label={"End Date"}
 					className={"grow"}
 					placeholder={"August 2025"}
+					required
 					value={job.endDate}
 					onChange={(event) => handleChange(event, "endDate")}
 				/>
 			</div>
 			<Textarea
 				label={"Description"}
+				required
 				placeholder={
 					"Separate each achievement with enter key ↵ \nExample:-\nDeveloped a REST API using FastAPI and PostgreSQL to store data from learning management systems. \nDeveloped a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data."
 				}
@@ -80,6 +97,9 @@ const WorkForm = ({ closeForm, setEditForm, work, setWork, editJob }) => {
 					Cancel
 				</Button>
 			</div>
+			<p className='text-red-500 mt-10 text-center'>
+				{error && "Some fields are missing"}
+			</p>
 		</div>
 	);
 };

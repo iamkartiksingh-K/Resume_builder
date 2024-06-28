@@ -14,25 +14,36 @@ const EducationForm = ({
 		editSchool || new CreateSchool()
 	);
 	const handleChange = (event, key) => {
+		setError(false);
 		setCollegeInfo({ ...collegeInfo, [key]: event.target.value });
 	};
+	const [error, setError] = useState(false);
+
 	const save = () => {
-		let newSchoolSet;
-		if (editSchool) {
-			newSchoolSet = education.map((currSchool) => {
-				if (currSchool.key === editSchool.key) {
-					return collegeInfo;
-				}
-				return currSchool;
-			});
+		const { collegeName, course, startDate, endDate } = collegeInfo;
+		if (!collegeName || !course || !startDate || !endDate) {
+			setError(true);
 		} else {
-			newSchoolSet = [...education, { ...collegeInfo, key: uniqueId() }];
+			let newSchoolSet;
+			if (editSchool) {
+				newSchoolSet = education.map((currSchool) => {
+					if (currSchool.key === editSchool.key) {
+						return collegeInfo;
+					}
+					return currSchool;
+				});
+			} else {
+				newSchoolSet = [
+					...education,
+					{ ...collegeInfo, key: uniqueId() },
+				];
+			}
+			setEducation(newSchoolSet);
+			setCollegeInfo(new CreateSchool());
+			localStorage.setItem("education", JSON.stringify(newSchoolSet));
+			setEditForm(undefined);
+			closeForm();
 		}
-		setEducation(newSchoolSet);
-		setCollegeInfo(new CreateSchool());
-		localStorage.setItem("education", JSON.stringify(newSchoolSet));
-		setEditForm(undefined);
-		closeForm();
 	};
 	const cancel = () => {
 		setCollegeInfo(new CreateSchool());
@@ -42,12 +53,14 @@ const EducationForm = ({
 		<div>
 			<Input
 				label={"College/School Name"}
+				required
 				value={collegeInfo.collegeName}
 				onChange={(event) => handleChange(event, "collegeName")}
 			/>
 			<Input
 				label={"Course"}
 				value={collegeInfo.course}
+				required
 				onChange={(event) => handleChange(event, "course")}
 			/>
 			<div className='flex space-x-5'>
@@ -55,6 +68,7 @@ const EducationForm = ({
 					label={"Start Date"}
 					className={"grow"}
 					placeholder={"August 2022"}
+					required
 					value={collegeInfo.startDate}
 					onChange={(event) => handleChange(event, "startDate")}
 				/>
@@ -62,6 +76,7 @@ const EducationForm = ({
 					label={"End Date"}
 					className={"grow"}
 					placeholder={"August 2025"}
+					required
 					value={collegeInfo.endDate}
 					onChange={(event) => handleChange(event, "endDate")}
 				/>
@@ -92,6 +107,9 @@ const EducationForm = ({
 					Cancel
 				</Button>
 			</div>
+			<p className='text-red-500 mt-10 text-center'>
+				{error && "Some fields are missing"}
+			</p>
 		</div>
 	);
 };

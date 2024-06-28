@@ -5,44 +5,61 @@ import { useState } from "react";
 import { v4 as uniqueId } from "uuid";
 import { CreateProject } from "../../utils/Helpers";
 
-const ProjectForm = ({ closeForm, project, setProject, editProject }) => {
+const ProjectForm = ({
+	closeForm,
+	project,
+	setProject,
+	editProject,
+	setEditForm,
+}) => {
 	const [currProject, setCurrProject] = useState(
 		editProject || new CreateProject()
 	);
+	const [error, setError] = useState(false);
 	const handleChange = (event, key) => {
 		setCurrProject({ ...currProject, [key]: event.target.value });
 	};
 	const save = () => {
-		let newProjectSet;
-		if (editProject) {
-			newProjectSet = project.map((thisProject) => {
-				if (thisProject.key === editProject.key) {
-					return currProject;
-				}
-				return thisProject;
-			});
+		const { projectName, techUsed, description } = currProject;
+		if (!projectName || !techUsed || !description) {
+			setError(true);
 		} else {
-			newProjectSet = [...project, { ...currProject, key: uniqueId() }];
+			let newProjectSet;
+			if (editProject) {
+				newProjectSet = project.map((thisProject) => {
+					if (thisProject.key === editProject.key) {
+						return currProject;
+					}
+					return thisProject;
+				});
+			} else {
+				newProjectSet = [
+					...project,
+					{ ...currProject, key: uniqueId() },
+				];
+			}
+			localStorage.setItem("projects", JSON.stringify(newProjectSet));
+			setProject(newProjectSet);
+			setEditForm(new CreateProject());
+			closeForm();
 		}
-		localStorage.setItem("projects", JSON.stringify(newProjectSet));
-		setProject(newProjectSet);
-		setCurrProject(new CreateProject());
-		closeForm();
 	};
 	const cancel = () => {
-		setCurrProject(new CreateProject());
+		setEditForm(new CreateProject());
 		closeForm();
 	};
 	return (
 		<div>
 			<Input
 				label={"Project Name"}
+				required
 				value={currProject.projectName}
 				onChange={(event) => handleChange(event, "projectName")}
 				placeholder={"Food App"}
 			/>
 			<Input
 				label={"Tech Used"}
+				required
 				value={currProject.techUsed}
 				onChange={(event) => handleChange(event, "techUsed")}
 				placeholder={"HTML, CSS, JavaScript"}
@@ -65,6 +82,7 @@ const ProjectForm = ({ closeForm, project, setProject, editProject }) => {
 			</div>
 			<Textarea
 				label={"Description"}
+				required
 				placeholder={
 					"Separate each achievement with enter key ↵ \nExample:-\nDeveloped a REST API using FastAPI and PostgreSQL to store data from learning management systems. \nDeveloped a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data."
 				}
@@ -97,6 +115,9 @@ const ProjectForm = ({ closeForm, project, setProject, editProject }) => {
 					Cancel
 				</Button>
 			</div>
+			<p className='text-red-500 mt-10 text-center'>
+				{error && "Some fields are missing"}
+			</p>
 		</div>
 	);
 };
