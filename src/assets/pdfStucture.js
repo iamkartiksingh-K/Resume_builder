@@ -149,7 +149,7 @@ const createProject = ({
 					{
 						stack: [
 							{
-								text: `${startDate} - ${endDate}`,
+								text: startDate && `${startDate} - ${endDate}`,
 								style: "rightTableHeading",
 							},
 						],

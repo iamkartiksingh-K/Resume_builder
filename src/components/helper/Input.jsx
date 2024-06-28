@@ -1,5 +1,5 @@
 import classNames from "classnames";
-const Input = ({ label, placeholder, type, className, ...rest }) => {
+const Input = ({ label, placeholder, type, required, className, ...rest }) => {
 	const containerClass = classNames("flex flex-col my-3", className);
 	return (
 		<div className={containerClass}>

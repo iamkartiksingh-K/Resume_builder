@@ -19,9 +19,7 @@ export default function Project({
 					</p>
 				</div>
 				<div className='text-right'>
-					<p>
-						{startDate} - {endDate}
-					</p>
+					<p>{startDate && `${startDate} - ${endDate}`}</p>
 				</div>
 			</div>
 
