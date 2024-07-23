@@ -33,7 +33,7 @@ const createCollege = ({
               style: "rightTableHeading",
             },
             {
-              text: `${scoreType}: ${score}`,
+              text: score && `${scoreType}: ${score}`,
               style: "rightTableSub",
             },
           ],
