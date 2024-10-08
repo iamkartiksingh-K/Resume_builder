@@ -1,7 +1,7 @@
 import VerticalBar from "./VerticalBar";
 export default function PersonalInfoSection({ info }) {
 	return (
-		<div className='mb-3'>
+		<div className='mb-3 text-xs sm:text-base'>
 			<h1 className='text-center text-3xl font-semibold mb-2'>
 				{info.fullName}
 			</h1>
